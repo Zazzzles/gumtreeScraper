@@ -6,33 +6,35 @@ main()
 async function main() {
   io.write("What type of car are you looking for? (bmw|audi)")
   const carType = await io.read()
-  let choseType = carType === 'bmw' || carType === 'audi';
+  let choseType = carType === "bmw" || carType === "audi"
   while (!choseType) {
-    io.write('Please choose either bmw or audi');
+    io.write("Please choose either bmw or audi")
     const carType = await io.read()
-    choseType = carType === 'bmw' || carType === 'audi';
+    choseType = carType === "bmw" || carType === "audi"
   }
   io.write("Max price?")
   const maxPrice = await io.read()
   let chosePrice = maxPrice !== ""
   while (!chosePrice) {
-    io.write('Please select a max price');
+    io.write("Please select a max price")
     const maxPrice = await io.read()
     chosePrice = maxPrice !== ""
   }
   io.write("Transmission type? (automatic|manual)")
   const transmissionType = await io.read()
-  let choseTransmissionType = transmissionType === 'automatic' || carType === 'manual';
+  let choseTransmissionType =
+    transmissionType === "automatic" || carType === "manual"
   while (!choseTransmissionType) {
-    io.write('Please choose either automatic or manual');
+    io.write("Please choose either automatic or manual")
     const transmissionType = await io.read()
-    choseTransmissionType = transmissionType === 'automatic' || carType === 'manual';
+    choseTransmissionType =
+      transmissionType === "automatic" || carType === "manual"
   }
   io.write("Max kms on clock?")
   const maxKms = await io.read()
   let choseKms = maxKms !== ""
   while (!choseKms) {
-    io.write('Please select max kms');
+    io.write("Please select max kms")
     const maxKms = await io.read()
     choseKms = maxKms !== ""
   }
@@ -56,27 +58,26 @@ function requestParse(carType, maxPrice, transmissionType, maxKms) {
     const wrapper = parsedResponse
       .querySelector(".results.list-view")
       .querySelector(".view")
-    if(wrapper){
-        wrapper.childNodes.forEach(node => {
-            const sanitizedResults = node.childNodes.filter(
-              item => item.structuredText
-            )
-            if (sanitizedResults.length) {
-              sanitizedResults.forEach((childNode, index) => {
-                const split = childNode.structuredText.split("\n")
-                if (split.length > 3) {
-                  console.table({
-                    index: `(${index + 1} / ${sanitizedResults.length} )`,
-                    title: split[1],
-                    //description: split[2],
-                    price: split[3]
-                  })
-                }
+    if (wrapper) {
+      wrapper.childNodes.forEach(node => {
+        const sanitizedResults = node.childNodes.filter(
+          item => item.structuredText
+        )
+        if (sanitizedResults.length) {
+          sanitizedResults.forEach((childNode, index) => {
+            const split = childNode.structuredText.split("\n")
+            if (split.length > 3) {
+              console.table({
+                index: `(${index + 1} / ${sanitizedResults.length} )`,
+                title: split[1],
+                price: split[3]
               })
             }
           })
-    }else{
-        console.log("No ads found")
+        }
+      })
+    } else {
+      console.log("No ads found")
     }
   }
 }

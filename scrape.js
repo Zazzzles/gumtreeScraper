@@ -40,7 +40,7 @@ async function main() {
   }
   requestParse(carType, maxPrice, transmissionType, maxKms)
 }
-function requestParse(carType, maxPrice, transmissionType, maxKms) {
+function requestParse (carType, maxPrice, transmissionType, maxKms) {
   const TARGET_URL = `https://www.gumtree.co.za/s-cars-bakkies/western-cape/${carType}~petrol~${transmissionType}/v1c9077l3100001a3mafutrp1?pr=,${maxPrice}&km=,${maxKms}&st=delr`
   console.log("Finding ads... ")
   fetch(TARGET_URL)
@@ -53,31 +53,31 @@ function requestParse(carType, maxPrice, transmissionType, maxKms) {
       console.log("Error retreiving ads")
       console.log(err)
     })
-  parsePageData = rawHtml => {
-    const parsedResponse = parse(rawHtml)
-    const wrapper = parsedResponse
-      .querySelector(".results.list-view")
-      .querySelector(".view")
-    if (wrapper) {
-      wrapper.childNodes.forEach(node => {
-        const sanitizedResults = node.childNodes.filter(
-          item => item.structuredText
-        )
-        if (sanitizedResults.length) {
-          sanitizedResults.forEach((childNode, index) => {
-            const split = childNode.structuredText.split("\n")
-            if (split.length > 3) {
-              console.table({
-                index: `(${index + 1} / ${sanitizedResults.length} )`,
-                title: split[1],
-                price: split[3]
-              })
-            }
-          })
-        }
-      })
-    } else {
-      console.log("No ads found")
-    }
+}
+function parsePageData (rawHtml) {
+  const parsedResponse = parse(rawHtml)
+  const wrapper = parsedResponse
+    .querySelector(".results.list-view")
+    .querySelector(".view")
+  if (wrapper) {
+    wrapper.childNodes.forEach(node => {
+      const sanitizedResults = node.childNodes.filter(
+        item => item.structuredText
+      )
+      if (sanitizedResults.length) {
+        sanitizedResults.forEach((childNode, index) => {
+          const split = childNode.structuredText.split("\n")
+          if (split.length > 3) {
+            console.table({
+              index: `(${index + 1} / ${sanitizedResults.length} )`,
+              title: split[1],
+              price: split[3]
+            })
+          }
+        })
+      }
+    })
+  } else {
+    console.log("No ads found")
   }
 }

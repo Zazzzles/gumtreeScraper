@@ -7,8 +7,9 @@
     "scrape": "node scrape.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": "scrape.js",
   "author": "Ras Brits",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 require("isomorphic-fetch")
 const io = require("console-read-write")
 const Parser = require("node-html-parser")

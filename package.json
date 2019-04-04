@@ -1,0 +1,24 @@
+{
+  "name": "gumtree-scraper",
+  "version": "1.0.0",
+  "description": "Foobar",
+  "main": "scrape.js",
+  "scripts": {
+    "scrape": "node scrape.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ras Brits",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "dependencies": {
+    "console-read-write": "^0.1.1",
+    "es6-promise": "^4.2.6",
+    "isomorphic-fetch": "^2.2.1",
+    "node-html-parser": "^1.1.14",
+    "save": "^2.3.3"
+  }
+}

@@ -4,8 +4,9 @@
 
 ## Usage
 
-> Use 'npm run scrape' to search for car ads
-> If you're using Yarn use 'yarn scrape' to search
+> Use `npm run scrape` to search for car ads
+
+> If you're using Yarn use `yarn scrape` to search
 
 ## Installation
 

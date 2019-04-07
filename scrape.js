@@ -6,13 +6,13 @@ const Parser = require("node-html-parser")
 const { parse } = Parser
 main()
 async function main() {
-  io.write("What type of car are you looking for? (bmw|audi)")
+  io.write("What type of car are you looking for? (bmw|audi|volkswagen)")
   const carType = await io.read()
-  let choseType = carType === "bmw" || carType === "audi"
+  let choseType = carType === "bmw" || carType === "audi" ||  carType === "volkswagen"
   while (!choseType) {
-    io.write("Please choose either bmw or audi")
+    io.write("Please choose either bmw or audi or volkswagen")
     const carType = await io.read()
-    choseType = carType === "bmw" || carType === "audi"
+    choseType = carType === "bmw" || carType === "audi" || carType === "volkswagen"
   }
   io.write("Max price?")
   const maxPrice = await io.read()
@@ -25,12 +25,12 @@ async function main() {
   io.write("Transmission type? (automatic|manual)")
   const transmissionType = await io.read()
   let choseTransmissionType =
-    transmissionType === "automatic" || carType === "manual"
+    transmissionType === "automatic" || transmissionType === "manual"
   while (!choseTransmissionType) {
     io.write("Please choose either automatic or manual")
-    const transmissionType = await io.read()
+    const transmissionTypeAgain = await io.read()
     choseTransmissionType =
-      transmissionType === "automatic" || carType === "manual"
+    transmissionTypeAgain === "automatic" || transmissionTypeAgain === "manual"
   }
   io.write("Max kms on clock?")
   const maxKms = await io.read()
